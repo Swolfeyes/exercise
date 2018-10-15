@@ -34,7 +34,7 @@ class TopStories {
   fetchTopStories() {
     this.handleRequestPending();
 
-    fetch('http://api.nytimes.com/svc/topstories/v2/theater.json?api-key=647f12c37d1048218f1e8b5d62d54fa8')
+    fetch('https://api.nytimes.com/svc/topstories/v2/theater.json?api-key=647f12c37d1048218f1e8b5d62d54fa8')
       .then(res => res.json())
       .then(data => this.handleRequestSuccess(data))
       .catch(this.handleRequestFail)
@@ -59,6 +59,7 @@ class TopStories {
   }
 
   handleRequestFail() {
+    $('.news-box--state-pending').remove();
     const $container = $('<div />')
       .attr({
         'class': 'news-box--state-failed',
