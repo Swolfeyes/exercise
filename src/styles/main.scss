@@ -1,0 +1,29 @@
+@import 'reset.scss';
+@import 'news-box/main.scss';
+
+
+body {
+  padding: 100px;
+}
+
+.wrapper {
+  width: 100%;
+  margin: auto;
+}
+
+
+
+// Media Queries
+@media (max-width: 687px) {
+
+  body {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  body {
+    padding: 30px;
+  }
+}

@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
+.news-box {
+
+  &__header {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+  }
+
+  &__body {
+    position: relative;
+
+    &__images {
+      padding: 45px 0;
+      width: 100%;
+
+      &__item {
+        position: absolute;
+        max-width: 1000px;
+        display: none;
+        overflow: hidden;
+        z-index: 0;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    &__side-navigation {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 435px;
+      padding: 10px 25px 135px 25px;
+      color: #fff;
+      background: #2D4EB5;
+      font-family: 'Open Sans', sans-serif;
+      z-index: 1;
+
+      &__item {
+        padding: 20px;
+        border-bottom: 1px solid #fff;
+
+        &__title {
+          cursor: pointer;
+        }
+
+        &__details {
+          display: none;
+
+          &__abstract {
+            padding-top: 20px;
+          }
+
+          &__link {
+            padding-top: 40px;
+
+            a {
+              font-weight: bold;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// States
+
+.news-box {
+
+  &__body {
+
+    &__images {
+
+      &__item {
+
+        &--state-active {
+          display: block;
+        }
+      }
+    }
+
+    &__side-navigation {
+
+      &__item {
+
+        &--state-active & {
+
+          &__details {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+.news-box {
+
+  &--state-failed {
+    display: table;
+    margin: 100px auto;
+    padding: 100px;
+    border-radius: 20px;
+    background-color: #2D4EB5;
+    color: #fff;
+
+    span {
+      font-size: 30px;
+      font-family: 'Open Sans', sans-serif;
+    }
+  }
+}
+
+// Media Queries
+@media (max-width: 687px) {
+
+  .news-box {
+
+    &__header {
+      text-align: center;
+      padding-bottom: 30px;
+      font-size: 20px;
+    }
+
+    &__body {
+
+      &__images {
+
+        &__item {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .news-box {
+
+    &__body {
+
+      &__side-navigation {
+        max-width: 300px;
+      }
+    }
+  }
+}
