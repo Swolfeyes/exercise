@@ -102,7 +102,7 @@
 
 .news-box {
 
-  &--state-failed {
+  &--state-failed, &--state-pending {
     display: table;
     margin: 100px auto;
     padding: 100px;
@@ -124,7 +124,6 @@
 
     &__header {
       text-align: center;
-      padding-bottom: 30px;
       font-size: 20px;
     }
 
@@ -135,6 +134,11 @@
         &__item {
           display: none;
         }
+      }
+
+      &__side-navigation {
+        position: relative;
+        margin: auto;
       }
     }
   }
