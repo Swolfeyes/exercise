@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const $ = require("jquery");
+// const $ = require("jquery");
 
 module.exports = {
   entry: './src/index.js',
@@ -35,12 +35,7 @@ module.exports = {
    plugins: [
     new webpack.HotModuleReplacementPlugin(),
     ],
-    [
-     new webpack.ProvidePlugin({
-         $: "jquery",
-         jQuery: "jquery"
-     })
-   ],
+
 
    devServer: {
     hot: true,

@@ -3,8 +3,15 @@ import $ from 'jquery';
 import './styles/main.scss';
 
 const $newsBox = $('.news-box');
-const $newsBoxHeader = $('.news-box__header');
-const $newsBoxBody = $('.news-box__body');
+
+const $newsBoxBody = $('<div />')
+  .attr({
+    'class': 'news-box__body',
+  })
+  ;
+
+
+$newsBox.append($newsBoxBody);
 
 const $newsBoxSideNavigation = $('<div />')
   .attr({
@@ -12,14 +19,13 @@ const $newsBoxSideNavigation = $('<div />')
   })
   ;
 
-const getTopStories = () => {
-
-  $.getJSON('http://api.nytimes.com/svc/topstories/v2/theater.json?api-key=647f12c37d1048218f1e8b5d62d54fa8')
-    .done(data => handleRequestSuccess(data))
-    .fail(handleRequestFail)
+const fetchTopStories = () => {
+  fetch('http://api.nytimes.com/svc/topstories/v2/theater.json?api-key=647f12c37d1048218f1e8b5d62d54fa8')
+    .then(res => res.json())
+    .then(data => handleRequestSuccess(data))
+    .catch(handleRequestFail)
     ;
 }
-
 
 const handleRequestSuccess = (data) => {
   createNewsBox(data.results);
@@ -50,9 +56,14 @@ const addEvents = () => {
 }
 
 const createHeader = () => {
-  $newsBoxHeader
+  const $newsBoxHeader = $('<div />')
+    .attr({
+      'class': 'news-box__header',
+    })
     .html(`<h1>Top Stories</h1>`)
     ;
+
+  $newsBox.prepend($newsBoxHeader);
 }
 
 const createNavigationItems = (list) => {
@@ -127,7 +138,6 @@ const createArticleImages = (list) => {
   });
 
   $newsBoxImages.append(imageItems);
-
 }
 
 const createNewsBox = (list) => {
@@ -146,6 +156,7 @@ const setImageStyle = () => {
   })
   ;
 }
+
 
 const setActiveStateStyle = (element, className) => {
   element.addClass(className);
@@ -172,4 +183,4 @@ const setActiveArticle = (index) => {
   setActiveImage(index);
 }
 
-getTopStories();
+fetchTopStories();
