@@ -2,6 +2,7 @@
 
 
 .news-box {
+  width: 100%;
 
   &__header {
     font-family: 'Open Sans', sans-serif;
@@ -10,14 +11,18 @@
 
   &__body {
     position: relative;
+    width: 100%;
 
     &__images {
+      position: absolute;
+      top: 0;
+      left: 0;
       padding: 45px 0;
       width: 100%;
 
       &__item {
         position: absolute;
-        max-width: 1000px;
+        width: 100%;
         display: none;
         overflow: hidden;
         z-index: 0;
